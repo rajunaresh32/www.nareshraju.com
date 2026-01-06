@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bubble Shooting Game</title>
+    <style>
+        body {
+            background: #003;
+            color: white;
+            text-align: center;
+            font-family: Arial;
+        }
+        canvas {
+            background: #000;
+            border: 2px solid cyan;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🫧 Bubble Shooting Game</h2>
+<p>Click to shoot bubbles</p>
+
+<canvas id="game" width="400" height="400"></canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let shooter = { x: 200 };
+let bubbles = [];
+let shots = [];
+let score = 0;
+
+canvas.addEventListener("click", () => {
+    shots.push({ x: shooter.x, y: 380 });
+});
+
+function spawnBubble() {
+    bubbles.push({
+        x: Math.random() * 380,
+        y: 0,
+        r: 10
+    });
+}
+
+function update() {
+    ctx.clearRect(0, 0, 400, 400);
+
+    // Shooter
+    ctx.fillStyle = "white";
+    ctx.fillRect(shooter.x - 10, 380, 20, 10);
+
+    // Shots
+    ctx.fillStyle = "yellow";
+    shots.forEach(s => {
+        s.y -= 6;
+        ctx.fillRect(s.x, s.y, 4, 8);
+    });
+
+    // Bubbles
+    ctx.fillStyle = "cyan";
+    bubbles.forEach(b => {
+        b.y += 2;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    // Collision
+    shots.forEach((s, si) => {
+        bubbles.forEach((b, bi) => {
+            let dx = s.x - b.x;
+            let dy = s.y - b.y;
+            if (Math.sqrt(dx * dx + dy * dy) < b.r) {
+                shots.splice(si, 1);
+                bubbles.splice(bi, 1);
+                score++;
+            }
+        });
+    });
+
+    ctx.fillStyle = "white";
+    ctx.fillText("Score: " + score, 10, 15);
+}
+
+setInterval(spawnBubble, 1200);
+setInterval(update, 30);
+</script>
+
+</body>
+</html>
