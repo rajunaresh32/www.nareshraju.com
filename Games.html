@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Zone | www.nareshraju.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.65);
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.6);
+        }
+
+        .site-name {
+            font-size: 16px;
+            color: #ffcc00;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        p {
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .game-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.3s;
+        }
+
+        .snake {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .bubble {
+            background: #2196F3;
+            color: white;
+        }
+
+        .game-btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .pass-play {
+            margin-top: 25px;
+            padding: 12px;
+            background: #FF9800;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .pass-play:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="site-name">
+            🌐 www.nareshraju.com
+        </div>
+
+        <h1>🎮 Game Zone</h1>
+        <p>Select a game to start playing</p>
+
+        <button class="game-btn snake" onclick="openGame('snake')">
+            🐍 Snake Shooting Game
+        </button>
+
+        <button class="game-btn bubble" onclick="openGame('bubble')">
+            🫧 Bubble Shooting Game
+        </button>
+
+        <div class="pass-play" onclick="passAndPlay()">
+            👥 Pass & Play Mode
+        </div>
+
+        <footer>
+            © 2026  
+            <a href="https://www.nareshraju.com" target="_blank">
+                www.nareshraju.com
+            </a>
+        </footer>
+
+    </div>
+
+    <script>
+        function openGame(game) {
+            if (game === 'snake') {
+                alert("Snake Shooting Game will start here!");
+                // window.location.href = "snake.html";
+            } else if (game === 'bubble') {
+                alert("Bubble Shooting Game will start here!");
+                // window.location.href = "bubble.html";
+            }
+        }
+
+        function passAndPlay() {
+            alert("Pass & Play mode enabled!\nPlayers can take turns.");
+        }
+    </script>
+
+</body>
+</html>
